@@ -90,7 +90,7 @@ php artisan scheduler:info stats
 
 ### Clean the scheduler cache
 
-```php
+```shell
 php artisan scheduler:clean
 ```
 
