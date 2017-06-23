@@ -1,0 +1,24 @@
+{
+    "name": "cyub/laravel-task-scheduler",
+    "description": "An Lightweight Laravel Task Scheduling Package",
+    "keywords": ["laravel","task scheduling"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "cyub",
+            "email": "qietingfy@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Tink\\Scheduler\\":"src"
+        }
+    },
+    "minimum-stability":"stable",
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "~5.0",
+        "illuminate/console": "~5.0",
+        "illuminate/cache": "~5.0"
+    }
+}
