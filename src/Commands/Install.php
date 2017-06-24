@@ -3,7 +3,7 @@
 namespace Tink\Scheduler\Commands;
 
 use Illuminate\Console\Command;
-use Scheduler\SchedulerServiceProvider;
+use Tink\Scheduler\SchedulerServiceProvider;
 
 class Install extends Command 
 {
