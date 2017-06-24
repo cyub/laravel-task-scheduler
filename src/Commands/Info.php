@@ -6,7 +6,6 @@ use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
-use Symfony\Component\Console\Helper\TableCell;
 
 class Info extends Command
 {
@@ -63,8 +62,7 @@ class Info extends Command
         $headers = ['Job_code', 'Count(success|error|running|missed|pending|total)', 'Time_consumed(max|min|avg)', 'Latest_success_at'];
         $rows = [];
 
-        $jobCodes = $this->getJobcodes();
-        foreach ($jobCodes as $item) {
+        foreach ($this->getJobcodes() as $item) {
             $jobCode = $item->job_code;
 
             $row[] = $jobCode;
@@ -112,7 +110,7 @@ EOD;
     {
         $status = Dispatch::STATUS_SUCCESS;
         $sql = <<<EOD
-SELECT MAX(finished_at - executed_at) AS max_time_consumed, MIN(finished_at - executed_at) AS min_time_consumed, AVG(finished_at - executed_at) AS avg_time_consumed
+SELECT MAX(unix_timestamp(finished_at) - unix_timestamp(executed_at)) AS max_time_consumed, MIN(unix_timestamp(finished_at) - unix_timestamp(executed_at)) AS min_time_consumed, AVG(unix_timestamp(finished_at) - unix_timestamp(executed_at)) AS avg_time_consumed
 FROM  `{$this->scheduler_config['schedule_table_name']}`
 WHERE status IN ('$status')    
 EOD;
