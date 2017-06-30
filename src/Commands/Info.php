@@ -37,7 +37,7 @@ class Info extends Command
         return call_user_func([$this, $method]);
     }
 
-
+    // display the configuration info about scheduler
     protected function displayConfigInfoAboutScheduler()
     {
         $headers = ['Job_code', 'Cron', 'Run params', 'Description'];
@@ -57,9 +57,10 @@ class Info extends Command
         $this->table($headers, $rows);
     }
 
+    // dispaly the stats info about scheduler dispath and run
     protected function displayStatsInfoAboutScheduler()
     {
-        $headers = ['Job_code', 'Count(success|error|running|missed|pending|total)', 'Time_consumed(max|min|avg)', 'Latest_success_at'];
+        $headers = ['Job_code', 'Count(success|error|running|missed|pending|total)', 'Time_consumed(max|min|avg)', 'Lastest_success_at'];
         $rows = [];
 
         foreach ($this->getJobcodes() as $item) {
@@ -95,7 +96,7 @@ class Info extends Command
 
         $countSqlSegments = '';
         foreach ($statusCode as $status => $code) {
-            $countSqlSegments .= "COUNT(CASE WHEN STATUS = '{$code}' THEN 1 ELSE NULL END) AS {$status}, ";
+            $countSqlSegments .= "COUNT(status = '{$code}' OR NULL) AS {$status}, ";
         }
         
         $sql = <<<EOD
