@@ -78,7 +78,7 @@ You can use in Cron
 php artisan scheduler:info config
 ```
 
-![scheduler config](http://static.cyub.me/images/201706/scheduler-info-config.jpg)
+![scheduler config](http://static.cyub.vip/images/201706/scheduler-info-config.jpg)
 
 ### View the scheduler run result stats
 
@@ -86,7 +86,7 @@ php artisan scheduler:info config
 php artisan scheduler:info stats
 ```
 
-![scheduler config](http://static.cyub.me/images/201706/scheduler-info-stats.jpg)
+![scheduler config](http://static.cyub.vip/images/201706/scheduler-info-stats.jpg)
 
 ### Clean the scheduler cache
 
